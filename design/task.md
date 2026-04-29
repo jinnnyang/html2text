@@ -1,0 +1,25 @@
+# html2text 实现任务清单
+
+- [/] 1. 初始化项目结构
+  - [ ] 创建 `package.json` 和 `tsconfig.json`
+- [ ] 2. 实现类型定义层 (`src/types.ts`)
+  - [ ] 定义 `HtmlNode` (包含 `HtmlElement`, `HtmlText`)
+  - [ ] 定义 `MdNode` (包含各种 Markdown 节点和 `MdYaml`)
+- [ ] 3. 实现 HTML 解析器 (`src/parser.ts`)
+  - [ ] 词法与语法分析：处理文本、起始标签、闭合标签
+  - [ ] 属性提取支持
+  - [ ] 处理自闭合标签
+- [ ] 4. 实现 AST 转换器 (`src/transformer.ts`)
+  - [ ] 基础块级/行内标签转换 (p, h1-h6, strong, em, etc.)
+  - [ ] 列表转换 (ul, ol, li)
+  - [ ] 表格转换 (table, tr, td, th)
+  - [ ] 图片与链接转换 (img, a)
+- [ ] 5. 实现 Markdown 生成器 (`src/stringify.ts`)
+  - [ ] YAML Front Matter 生成
+  - [ ] 基础文本和样式生成
+  - [ ] 列表嵌套缩进计算
+  - [ ] 表格排版计算与对齐
+- [ ] 6. 实现组合入口与测试
+  - [ ] `src/index.ts` API 封装
+  - [ ] `test-run.ts` 综合测试用例编写
+  - [ ] 运行验证并修复 bug

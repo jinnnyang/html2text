@@ -1,0 +1,1276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta charset="UTF-8" />
+    <link rel="canonical" href="https://linux.die.net/man/2/accept" />
+    <!-- base href="https://linux.die.net/man/2/" -->
+    <link rel="stylesheet" href="example-input_files/die.css" />
+    <link rel="icon" href="https://linux.die.net/favicon.ico" />
+    <title>accept(2): accept connection on socket - Linux man page</title>
+    <meta
+      name="description"
+      content="The accept() system call is used with connection-based socket types (SOCK_STREAM, SOCK_SEQPACKET). It extracts the first connection request on the queue of ..."
+    />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style type="text/css">
+      @font-face {
+        font-family: "xm-iconfont";
+        src: url("//at.alicdn.com/t/font_792691_ptvyboo0bno.eot?t=1574048839056");
+        /* IE9 */
+        src:
+          url("//at.alicdn.com/t/font_792691_ptvyboo0bno.eot?t=1574048839056#iefix")
+            format("embedded-opentype"),
+          /* IE6-IE8 */
+            url("data:application/x-font-woff2;charset=utf-8;base64,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")
+            format("woff2"),
+          url("//at.alicdn.com/t/font_792691_ptvyboo0bno.woff?t=1574048839056")
+            format("woff"),
+          url("//at.alicdn.com/t/font_792691_ptvyboo0bno.ttf?t=1574048839056")
+            format("truetype"),
+          /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+            url("//at.alicdn.com/t/font_792691_ptvyboo0bno.svg?t=1574048839056#iconfont")
+            format("svg");
+        /* iOS 4.1- */
+      }
+      .xm-iconfont {
+        font-family: "xm-iconfont" !important;
+        font-size: 16px;
+        font-style: normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .xm-icon-quanxuan:before {
+        content: "\e62c";
+      }
+      .xm-icon-caidan:before {
+        content: "\e610";
+      }
+      .xm-icon-fanxuan:before {
+        content: "\e837";
+      }
+      .xm-icon-pifu:before {
+        content: "\e668";
+      }
+      .xm-icon-qingkong:before {
+        content: "\e63e";
+      }
+      .xm-icon-sousuo:before {
+        content: "\e600";
+      }
+      .xm-icon-danx:before {
+        content: "\e62b";
+      }
+      .xm-icon-duox:before {
+        content: "\e613";
+      }
+      .xm-icon-close:before {
+        content: "\e601";
+      }
+      .xm-icon-expand:before {
+        content: "\e641";
+      }
+      .xm-icon-banxuan:before {
+        content: "\e60d";
+      }
+    </style>
+    <style type="text/css">
+      @-webkit-keyframes xm-upbit {
+        from {
+          -webkit-transform: translate3d(0, 30px, 0);
+          opacity: 0.3;
+        }
+        to {
+          -webkit-transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+      @keyframes xm-upbit {
+        from {
+          transform: translate3d(0, 30px, 0);
+          opacity: 0.3;
+        }
+        to {
+          transform: translate3d(0, 0, 0);
+          opacity: 1;
+        }
+      }
+      @-webkit-keyframes loader {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      @keyframes loader {
+        0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+        }
+        100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+        }
+      }
+      xm-select {
+        background-color: #fff;
+        position: relative;
+        border: 1px solid #e6e6e6;
+        border-radius: 2px;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        outline: none;
+      }
+      xm-select * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-size: 14px;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+      }
+      xm-select:hover,
+      xm-select:focus {
+        border-color: #c0c4cc;
+      }
+      xm-select > .xm-tips {
+        color: #999999;
+        padding: 0 10px;
+        position: absolute;
+        display: flex;
+        height: 100%;
+        align-items: center;
+      }
+      xm-select > .xm-icon {
+        display: inline-block;
+        overflow: hidden;
+        position: absolute;
+        width: 0;
+        height: 0;
+        right: 10px;
+        top: 50%;
+        margin-top: -3px;
+        cursor: pointer;
+        border: 6px dashed transparent;
+        border-top-color: #c2c2c2;
+        border-top-style: solid;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+      }
+      xm-select > .xm-icon-expand {
+        margin-top: -9px;
+        transform: rotate(180deg);
+      }
+      xm-select > .xm-label.single-row {
+        position: absolute;
+        top: 0;
+        bottom: 0px;
+        left: 0px;
+        right: 30px;
+        overflow: auto hidden;
+      }
+      xm-select > .xm-label.single-row .scroll {
+        overflow-y: hidden;
+      }
+      xm-select > .xm-label.single-row .label-content {
+        flex-wrap: nowrap;
+        white-space: nowrap;
+      }
+      xm-select > .xm-label.auto-row .label-content {
+        flex-wrap: wrap;
+        padding-right: 30px !important;
+      }
+      xm-select > .xm-label.auto-row .xm-label-block > span {
+        white-space: unset;
+        height: 100%;
+      }
+      xm-select > .xm-label .scroll .label-content {
+        display: flex;
+        padding: 3px 10px;
+      }
+      xm-select > .xm-label .xm-label-block {
+        display: flex;
+        position: relative;
+        padding: 0px 5px;
+        margin: 2px 5px 2px 0;
+        border-radius: 3px;
+        align-items: baseline;
+        color: #fff;
+      }
+      xm-select > .xm-label .xm-label-block > span {
+        display: flex;
+        color: #fff;
+        white-space: nowrap;
+      }
+      xm-select > .xm-label .xm-label-block > i {
+        color: #fff;
+        margin-left: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+      }
+      xm-select > .xm-label .xm-label-block.disabled {
+        background-color: #c2c2c2 !important;
+        cursor: no-drop !important;
+      }
+      xm-select > .xm-label .xm-label-block.disabled > i {
+        cursor: no-drop !important;
+      }
+      xm-select > .xm-body {
+        position: absolute;
+        left: 0;
+        top: 42px;
+        padding: 5px 0;
+        z-index: 999;
+        width: 100%;
+        min-width: fit-content;
+        border: 1px solid #e6e6e6;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+        animation-name: xm-upbit;
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+      }
+      xm-select > .xm-body .scroll-body {
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      xm-select > .xm-body .scroll-body::-webkit-scrollbar {
+        width: 8px;
+      }
+      xm-select > .xm-body .scroll-body::-webkit-scrollbar-track {
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        -ms-border-radius: 2em;
+        border-radius: 2em;
+        background-color: #fff;
+      }
+      xm-select > .xm-body .scroll-body::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 2em;
+        -moz-border-radius: 2em;
+        -ms-border-radius: 2em;
+        border-radius: 2em;
+        background-color: #c2c2c2;
+      }
+      xm-select > .xm-body.up {
+        top: auto;
+        bottom: 42px;
+      }
+      xm-select > .xm-body.relative {
+        position: relative;
+        display: block !important;
+        top: 0;
+        box-shadow: none;
+        border: none;
+        animation-name: none;
+        animation-duration: 0;
+        min-width: 100%;
+      }
+      xm-select > .xm-body .xm-group {
+        cursor: default;
+      }
+      xm-select > .xm-body .xm-group-item {
+        display: inline-block;
+        cursor: pointer;
+        padding: 0 10px;
+        color: #999;
+        font-size: 12px;
+      }
+      xm-select > .xm-body .xm-option {
+        display: flex;
+        align-items: center;
+        position: relative;
+        padding: 0 10px;
+        cursor: pointer;
+      }
+      xm-select > .xm-body .xm-option-icon {
+        color: transparent;
+        display: flex;
+        border: 1px solid #e6e6e6;
+        border-radius: 3px;
+        justify-content: center;
+        align-items: center;
+      }
+      xm-select > .xm-body .xm-option-icon.xm-custom-icon {
+        color: unset;
+        border: unset;
+      }
+      xm-select > .xm-body .xm-option-icon-hidden {
+        margin-right: -10px;
+      }
+      xm-select > .xm-body .xm-option-icon.xm-icon-danx {
+        border-radius: 100%;
+      }
+      xm-select > .xm-body .xm-option-content {
+        display: flex;
+        position: relative;
+        padding-left: 15px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: calc(100% - 20px);
+      }
+      xm-select > .xm-body .xm-option.hide-icon .xm-option-content {
+        padding-left: 0;
+      }
+      xm-select > .xm-body .xm-option.selected.hide-icon .xm-option-content {
+        color: #fff !important;
+      }
+      xm-select > .xm-body .xm-option .loader {
+        width: 0.8em;
+        height: 0.8em;
+        margin-right: 6px;
+        color: #c2c2c2;
+      }
+      xm-select > .xm-body .xm-select-empty {
+        text-align: center;
+        color: #999;
+      }
+      xm-select > .xm-body .disabled {
+        cursor: no-drop;
+      }
+      xm-select > .xm-body .disabled:hover {
+        background-color: #fff;
+      }
+      xm-select > .xm-body .disabled .xm-option-icon {
+        border-color: #c2c2c2 !important;
+      }
+      xm-select > .xm-body .disabled .xm-option-content {
+        color: #c2c2c2 !important;
+      }
+      xm-select > .xm-body .disabled.selected > .xm-option-icon {
+        color: #c2c2c2 !important;
+      }
+      xm-select > .xm-body .xm-search {
+        background-color: #fff !important;
+        position: relative;
+        padding: 0 10px;
+        margin-bottom: 5px;
+        cursor: pointer;
+      }
+      xm-select > .xm-body .xm-search > i {
+        position: absolute;
+        color:;
+      }
+      xm-select > .xm-body .xm-search-input {
+        border: none;
+        border-bottom: 1px solid #e6e6e6;
+        padding-left: 27px;
+        cursor: text;
+      }
+      xm-select > .xm-body .xm-paging {
+        padding: 0 10px;
+        display: flex;
+        margin-top: 5px;
+      }
+      xm-select > .xm-body .xm-paging > span:first-child {
+        border-radius: 2px 0 0 2px;
+      }
+      xm-select > .xm-body .xm-paging > span:last-child {
+        border-radius: 0 2px 2px 0;
+      }
+      xm-select > .xm-body .xm-paging > span {
+        display: flex;
+        flex: auto;
+        justify-content: center;
+        vertical-align: middle;
+        margin: 0 -1px 0 0;
+        background-color: #fff;
+        color: #333;
+        font-size: 12px;
+        border: 1px solid #e2e2e2;
+        flex-wrap: nowrap;
+        width: 100%;
+        overflow: hidden;
+        min-width: 50px;
+      }
+      xm-select > .xm-body .xm-toolbar {
+        padding: 0 10px;
+        display: flex;
+        margin: -3px 0;
+        cursor: default;
+      }
+      xm-select > .xm-body .xm-toolbar .toolbar-tag {
+        cursor: pointer;
+        display: flex;
+        margin-right: 20px;
+        color:;
+        align-items: baseline;
+      }
+      xm-select > .xm-body .xm-toolbar .toolbar-tag:hover {
+        opacity: 0.8;
+      }
+      xm-select > .xm-body .xm-toolbar .toolbar-tag:active {
+        opacity: 1;
+      }
+      xm-select > .xm-body .xm-toolbar .toolbar-tag > i {
+        margin-right: 2px;
+        font-size: 14px;
+      }
+      xm-select > .xm-body .xm-toolbar .toolbar-tag:last-child {
+        margin-right: 0;
+      }
+      xm-select > .xm-body .xm-body-custom {
+        line-height: initial;
+        cursor: default;
+      }
+      xm-select > .xm-body .xm-body-custom * {
+        box-sizing: initial;
+      }
+      xm-select > .xm-body .xm-tree {
+        position: relative;
+      }
+      xm-select > .xm-body .xm-tree-icon {
+        display: inline-block;
+        margin-right: 3px;
+        cursor: pointer;
+        border: 6px dashed transparent;
+        border-left-color: #c2c2c2;
+        border-left-style: solid;
+        transition: all 0.3s;
+        -webkit-transition: all 0.3s;
+        z-index: 2;
+        visibility: hidden;
+      }
+      xm-select > .xm-body .xm-tree-icon.expand {
+        margin-top: 3px;
+        margin-right: 5px;
+        margin-left: -2px;
+        transform: rotate(90deg);
+      }
+      xm-select > .xm-body .xm-tree-icon.xm-visible {
+        visibility: visible;
+      }
+      xm-select > .xm-body .xm-tree .left-line {
+        position: absolute;
+        left: 13px;
+        width: 0;
+        z-index: 1;
+        border-left: 1px dotted #c0c4cc !important;
+      }
+      xm-select > .xm-body .xm-tree .top-line {
+        position: absolute;
+        left: 13px;
+        height: 0;
+        z-index: 1;
+        border-top: 1px dotted #c0c4cc !important;
+      }
+      xm-select > .xm-body .xm-tree .xm-tree-icon + .top-line {
+        margin-left: 1px;
+      }
+      xm-select > .xm-body .scroll-body > .xm-tree > .xm-option > .top-line,
+      xm-select > .xm-body .scroll-body > .xm-option > .top-line {
+        width: 0 !important;
+      }
+      xm-select > .xm-body .xm-cascader-box {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        padding: 5px 0;
+        border: 1px solid #e6e6e6;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+        margin: -1px;
+      }
+      xm-select > .xm-body .xm-cascader-box::before {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-right-color: #e6e6e6;
+        top: 10px;
+        left: -12px;
+      }
+      xm-select > .xm-body .xm-cascader-box::after {
+        content: " ";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 6px solid transparent;
+        border-right-color: #fff;
+        top: 10px;
+        left: -11px;
+      }
+      xm-select > .xm-body .xm-cascader-scroll {
+        height: 100%;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+      xm-select > .xm-body.cascader {
+        width: unset;
+        min-width: unset;
+      }
+      xm-select > .xm-body.cascader .xm-option-content {
+        padding-left: 8px;
+      }
+      xm-select > .xm-body.cascader .disabled .xm-right-arrow {
+        color: #c2c2c2 !important;
+      }
+      xm-select > .xm-body.cascader .hide-icon.disabled .xm-right-arrow {
+        color: #999 !important;
+      }
+      xm-select .xm-input {
+        cursor: pointer;
+        border-radius: 2px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: #e6e6e6;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        background-color: #fff;
+        line-height: 1.3;
+        padding-left: 10px;
+        outline: 0;
+        user-select: text;
+        -ms-user-select: text;
+        -moz-user-select: text;
+        -webkit-user-select: text;
+      }
+      xm-select .dis {
+        display: none;
+      }
+      xm-select .loading {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      xm-select .loader {
+        border: 0.2em dotted currentcolor;
+        border-radius: 50%;
+        -webkit-animation: 1s loader linear infinite;
+        animation: 1s loader linear infinite;
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        color: inherit;
+        vertical-align: middle;
+        pointer-events: none;
+      }
+      xm-select .xm-select-default {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border: none;
+        visibility: hidden;
+      }
+      xm-select .xm-select-disabled {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        cursor: no-drop;
+        z-index: 2;
+        opacity: 0.3;
+        background-color: #fff;
+      }
+      xm-select .item--divided {
+        border-top: 1px solid #ebeef5;
+        width: calc(100% - 20px);
+        cursor: initial;
+      }
+      xm-select .xm-right-arrow {
+        position: absolute;
+        color:;
+        right: 5px;
+        top: -1px;
+        font-weight: 700;
+        transform: scale(0.6, 1);
+      }
+      xm-select .xm-right-arrow::after {
+        content: ">";
+      }
+      xm-select[size="large"] {
+        min-height: 40px;
+        line-height: 40px;
+      }
+      xm-select[size="large"] .xm-input {
+        height: 40px;
+      }
+      xm-select[size="large"] .xm-label .scroll .label-content {
+        line-height: 34px;
+      }
+      xm-select[size="large"] .xm-label .xm-label-block {
+        height: 30px;
+        line-height: 30px;
+      }
+      xm-select[size="large"] .xm-body .xm-option .xm-option-icon {
+        height: 20px;
+        width: 20px;
+        font-size: 20px;
+      }
+      xm-select[size="large"] .xm-paging > span {
+        height: 34px;
+        line-height: 34px;
+      }
+      xm-select[size="large"] .xm-tree .left-line {
+        height: 100%;
+        bottom: 20px;
+      }
+      xm-select[size="large"] .xm-tree .left-line-group {
+        height: calc(100% - 40px);
+      }
+      xm-select[size="large"] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+        top: 19px;
+      }
+      xm-select[size="large"] .item--divided {
+        margin: 10px;
+      }
+      xm-select {
+        min-height: 36px;
+        line-height: 36px;
+      }
+      xm-select .xm-input {
+        height: 36px;
+      }
+      xm-select .xm-label .scroll .label-content {
+        line-height: 30px;
+      }
+      xm-select .xm-label .xm-label-block {
+        height: 26px;
+        line-height: 26px;
+      }
+      xm-select .xm-body .xm-option .xm-option-icon {
+        height: 18px;
+        width: 18px;
+        font-size: 18px;
+      }
+      xm-select .xm-paging > span {
+        height: 30px;
+        line-height: 30px;
+      }
+      xm-select .xm-tree .left-line {
+        height: 100%;
+        bottom: 18px;
+      }
+      xm-select .xm-tree .left-line-group {
+        height: calc(100% - 36px);
+      }
+      xm-select .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+        top: 17px;
+      }
+      xm-select .item--divided {
+        margin: 9px;
+      }
+      xm-select[size="small"] {
+        min-height: 32px;
+        line-height: 32px;
+      }
+      xm-select[size="small"] .xm-input {
+        height: 32px;
+      }
+      xm-select[size="small"] .xm-label .scroll .label-content {
+        line-height: 26px;
+      }
+      xm-select[size="small"] .xm-label .xm-label-block {
+        height: 22px;
+        line-height: 22px;
+      }
+      xm-select[size="small"] .xm-body .xm-option .xm-option-icon {
+        height: 16px;
+        width: 16px;
+        font-size: 16px;
+      }
+      xm-select[size="small"] .xm-paging > span {
+        height: 26px;
+        line-height: 26px;
+      }
+      xm-select[size="small"] .xm-tree .left-line {
+        height: 100%;
+        bottom: 16px;
+      }
+      xm-select[size="small"] .xm-tree .left-line-group {
+        height: calc(100% - 32px);
+      }
+      xm-select[size="small"] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+        top: 15px;
+      }
+      xm-select[size="small"] .item--divided {
+        margin: 8px;
+      }
+      xm-select[size="mini"] {
+        min-height: 28px;
+        line-height: 28px;
+      }
+      xm-select[size="mini"] .xm-input {
+        height: 28px;
+      }
+      xm-select[size="mini"] .xm-label .scroll .label-content {
+        line-height: 22px;
+      }
+      xm-select[size="mini"] .xm-label .xm-label-block {
+        height: 18px;
+        line-height: 18px;
+      }
+      xm-select[size="mini"] .xm-body .xm-option .xm-option-icon {
+        height: 14px;
+        width: 14px;
+        font-size: 14px;
+      }
+      xm-select[size="mini"] .xm-paging > span {
+        height: 22px;
+        line-height: 22px;
+      }
+      xm-select[size="mini"] .xm-tree .left-line {
+        height: 100%;
+        bottom: 14px;
+      }
+      xm-select[size="mini"] .xm-tree .left-line-group {
+        height: calc(100% - 28px);
+      }
+      xm-select[size="mini"] .xm-tree .xm-tree-icon.xm-hidden + .top-line {
+        top: 13px;
+      }
+      xm-select[size="mini"] .item--divided {
+        margin: 7px;
+      }
+      .layui-form-pane xm-select {
+        margin: -1px -1px -1px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="bg">
+      <header id="logo">
+        <a href="https://www.die.net/" aria-label="die.net"></a>
+      </header>
+      <nav id="menu" aria-label="Site navigation">
+        <dl>
+          <dt>Site Search</dt>
+          <dd>
+            <form id="cse-search-box-menu" action="https://www.die.net/search/">
+              <input name="q" type="text" aria-label="Search this site" />
+              <input type="hidden" name="sa" value="Search" />
+              <input type="hidden" name="ie" value="UTF-8" />
+              <input
+                type="hidden"
+                name="cx"
+                value="partner-pub-5823754184406795:54htp1rtx5u"
+              />
+              <input type="hidden" name="cof" value="FORID:9" />
+            </form>
+            <script>
+              document.forms["cse-search-box-menu"].action =
+                "https://www.die.net/search/";
+            </script>
+          </dd>
+        </dl>
+        <dl>
+          <dt>Library</dt>
+          <dd><a href="https://linux.die.net/">linux docs</a></dd>
+          <dd><a href="https://linux.die.net/man/">linux man pages</a></dd>
+        </dl>
+        <dl>
+          <dt>Toys</dt>
+          <dd><a href="https://www.die.net/earth/">world sunlight</a></dd>
+          <dd><a href="https://www.die.net/moon/">moon phase</a></dd>
+        </dl>
+        <dl>
+          <dt>
+            <a
+              class="back"
+              href="https://linux.die.net/man/2/"
+              aria-label="Back"
+            ></a>
+          </dt>
+          <dd></dd>
+        </dl>
+      </nav>
+      <main id="content">
+        <h1>accept(2) - Linux man page</h1>
+
+        <h2>Name</h2>
+        accept, accept4 - accept a connection on a socket
+        <h2>Synopsis</h2>
+        <pre
+          class="code"
+        >#include &lt;<a href="https://linux.die.net/include/sys/types.h" rel="nofollow">sys/types.h</a>&gt;          /* See NOTES */#include &lt;<a href="https://linux.die.net/include/sys/socket.h" rel="nofollow">sys/socket.h</a>&gt;int accept(int
+sockfd, struct sockaddr *addr, socklen_t *addrlen);#define _GNU_SOURCE
+            /* See <b><a href="https://linux.die.net/man/7/feature_test_macros">feature_test_macros</a></b>(7) */#include &lt;<a href="https://linux.die.net/include/sys/socket.h" rel="nofollow">sys/socket.h</a>&gt;int accept4(int
+sockfd, struct sockaddr *addr,            socklen_t *addrlen, int flags);</pre>
+        <h2>Description</h2>
+        <div id="adright">
+          <script
+            async=""
+            src="example-input_files/adsbygoogle.js"
+            crossorigin="anonymous"
+          ></script>
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-5823754184406795"
+            data-ad-slot="1862779642"
+            data-ad-format="auto"
+            data-full-width-responsive="false"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+
+        The <b>accept</b>() system call is used with connection-based socket
+        types (<b>SOCK_STREAM</b>, <b>SOCK_SEQPACKET</b>). It extracts the first
+        connection request on the queue of pending connections for the listening
+        socket, <i>sockfd</i>, creates a new connected socket, and returns a new
+        file descriptor referring to that socket. The newly created socket is
+        not in the listening state. The original socket <i>sockfd</i> is
+        unaffected by this call.
+        <p>
+          The argument <i>sockfd</i> is a socket that has been created with
+          <i
+            ><b><a href="https://linux.die.net/man/2/socket">socket</a></b
+            >(2)</i
+          >, bound to a local address with
+          <i
+            ><b><a href="https://linux.die.net/man/2/bind">bind</a></b
+            >(2)</i
+          >, and is listening for connections after a
+          <i
+            ><b><a href="https://linux.die.net/man/2/listen">listen</a></b
+            >(2)</i
+          >.
+        </p>
+        <p>
+          The argument <i>addr</i> is a pointer to a <i>sockaddr</i> structure.
+          This structure is filled in with the address of the peer socket, as
+          known to the communications layer. The exact format of the address
+          returned <i>addr</i> is determined by the socket's address family (see
+          <i
+            ><b
+              ><a href="https://linux.die.net/man/2/socket" rel="nofollow"
+                >socket</a
+              ></b
+            >(2)</i
+          >
+          and the respective protocol man pages). When <i>addr</i> is NULL,
+          nothing is filled in; in this case, <i>addrlen</i> is not used, and
+          should also be NULL.
+        </p>
+        <p>
+          The <i>addrlen</i> argument is a value-result argument: the caller
+          must initialize it to contain the size (in bytes) of the structure
+          pointed to by <i>addr</i>; on return it will contain the actual size
+          of the peer address.
+        </p>
+        <p>
+          The returned address is truncated if the buffer provided is too small;
+          in this case, <i>addrlen</i> will return a value greater than was
+          supplied to the call.
+        </p>
+        <p>
+          If no pending connections are present on the queue, and the socket is
+          not marked as nonblocking, <b>accept</b>() blocks the caller until a
+          connection is present. If the socket is marked nonblocking and no
+          pending connections are present on the queue, <b>accept</b>() fails
+          with the error <b>EAGAIN</b> or <b>EWOULDBLOCK</b>.
+        </p>
+        <p>
+          In order to be notified of incoming connections on a socket, you can
+          use
+          <i
+            ><b><a href="https://linux.die.net/man/2/select">select</a></b
+            >(2)</i
+          >
+          or
+          <i
+            ><b><a href="https://linux.die.net/man/2/poll">poll</a></b
+            >(2)</i
+          >. A readable event will be delivered when a new connection is
+          attempted and you may then call <b>accept</b>() to get a socket for
+          that connection. Alternatively, you can set the socket to deliver
+          <b>SIGIO</b> when activity occurs on a socket; see
+          <i
+            ><b><a href="https://linux.die.net/man/7/socket">socket</a></b
+            >(7)</i
+          >
+          for details.
+        </p>
+        <p>
+          For certain protocols which require an explicit confirmation, such as
+          DECNet, <b>accept</b>() can be thought of as merely dequeuing the next
+          connection request and not implying confirmation. Confirmation can be
+          implied by a normal read or write on the new file descriptor, and
+          rejection can be implied by closing the new socket. Currently only
+          DECNet has these semantics on Linux.
+        </p>
+        <p>
+          If <i>flags</i> is 0, then <b>accept4</b>() is the same as
+          <b>accept</b>(). The following values can be bitwise ORed in
+          <i>flags</i> to obtain different behavior:
+        </p>
+        <dl compact="compact">
+          <dt><b>SOCK_NONBLOCK</b></dt>
+          <dd>
+            Set the <b>O_NONBLOCK</b> file status flag on the new open file
+            description. Using this flag saves extra calls to
+            <i
+              ><b><a href="https://linux.die.net/man/2/fcntl">fcntl</a></b
+              >(2)</i
+            >
+            to achieve the same result.
+          </dd>
+          <dt><b>SOCK_CLOEXEC</b></dt>
+          <dd>
+            Set the close-on-exec (<b>FD_CLOEXEC</b>) flag on the new file
+            descriptor. See the description of the <b>O_CLOEXEC</b> flag in
+            <i
+              ><b><a href="https://linux.die.net/man/2/open">open</a></b
+              >(2)</i
+            >
+            for reasons why this may be useful.
+          </dd>
+        </dl>
+        <h2>Return Value</h2>
+        On success, these system calls return a nonnegative integer that is a
+        descriptor for the accepted socket. On error, -1 is returned, and
+        <i>errno</i> is set appropriately.
+        <h3>Error handling</h3>
+        Linux <b>accept</b>() (and <b>accept4</b>()) passes already-pending
+        network errors on the new socket as an error code from <b>accept</b>().
+        This behavior differs from other BSD socket implementations. For
+        reliable operation the application should detect the network errors
+        defined for the protocol after <b>accept</b>() and treat them like
+        <b>EAGAIN</b> by retrying. In the case of TCP/IP, these are
+        <b>ENETDOWN</b>, <b>EPROTO</b>, <b>ENOPROTOOPT</b>, <b>EHOSTDOWN</b>,
+        <b>ENONET</b>, <b>EHOSTUNREACH</b>, <b>EOPNOTSUPP</b>, and
+        <b>ENETUNREACH</b>.
+        <h2>Errors</h2>
+        <dl compact="compact">
+          <dt><b>EAGAIN</b> or <b>EWOULDBLOCK</b></dt>
+          <dd>
+            The socket is marked nonblocking and no connections are present to
+            be accepted. POSIX.1-2001 allows either error to be returned for
+            this case, and does not require these constants to have the same
+            value, so a portable application should check for both
+            possibilities.
+          </dd>
+          <dt><b>EBADF</b></dt>
+          <dd>The descriptor is invalid.</dd>
+          <dt><b>ECONNABORTED</b></dt>
+          <dd>A connection has been aborted.</dd>
+          <dt><b>EFAULT</b></dt>
+          <dd>
+            The <i>addr</i> argument is not in a writable part of the user
+            address space.
+          </dd>
+          <dt><b>EINTR</b></dt>
+          <dd>
+            The system call was interrupted by a signal that was caught before a
+            valid connection arrived; see
+            <i
+              ><b><a href="https://linux.die.net/man/7/signal">signal</a></b
+              >(7)</i
+            >.
+          </dd>
+          <dt><b>EINVAL</b></dt>
+          <dd>
+            Socket is not listening for connections, or <i>addrlen</i> is
+            invalid (e.g., is negative).
+          </dd>
+          <dt><b>EINVAL</b></dt>
+          <dd>(<b>accept4</b>()) invalid value in <i>flags</i>.</dd>
+          <dt><b>EMFILE</b></dt>
+          <dd>
+            The per-process limit of open file descriptors has been reached.
+          </dd>
+          <dt><b>ENFILE</b></dt>
+          <dd>
+            The system limit on the total number of open files has been reached.
+          </dd>
+          <dt><b>ENOBUFS</b>, <b>ENOMEM</b></dt>
+          <dd>
+            Not enough free memory. This often means that the memory allocation
+            is limited by the socket buffer limits, not by the system memory.
+          </dd>
+          <dt><b>ENOTSOCK</b></dt>
+          <dd>The descriptor references a file, not a socket.</dd>
+          <dt><b>EOPNOTSUPP</b></dt>
+          <dd>The referenced socket is not of type <b>SOCK_STREAM</b>.</dd>
+          <dt><b>EPROTO</b></dt>
+          <dd>Protocol error.</dd>
+        </dl>
+        <p>In addition, Linux <b>accept</b>() may fail if:</p>
+        <dl compact="compact">
+          <dt><b>EPERM</b></dt>
+          <dd>Firewall rules forbid connection.</dd>
+        </dl>
+        <p>
+          In addition, network errors for the new socket and as defined for the
+          protocol may be returned. Various Linux kernels can return other
+          errors such as <b>ENOSR</b>, <b>ESOCKTNOSUPPORT</b>,
+          <b>EPROTONOSUPPORT</b>, <b>ETIMEDOUT</b>. The value
+          <b>ERESTARTSYS</b> may be seen during a trace.
+        </p>
+        <h2>Versions</h2>
+        The <b>accept4</b>() system call is available starting with Linux
+        2.6.28; support in glibc is available starting with version 2.10.
+        <h2>Conforming to</h2>
+        <b>accept</b>(): POSIX.1-2001, SVr4, 4.4BSD, (<b>accept</b>() first
+        appeared in 4.2BSD).
+        <p><b>accept4</b>() is a nonstandard Linux extension.</p>
+        <p>
+          On Linux, the new socket returned by <b>accept</b>() does
+          <i>not</i> inherit file status flags such as <b>O_NONBLOCK</b> and
+          <b>O_ASYNC</b> from the listening socket. This behavior differs from
+          the canonical BSD sockets implementation. Portable programs should not
+          rely on inheritance or noninheritance of file status flags and always
+          explicitly set all required flags on the socket returned from
+          <b>accept</b>().
+        </p>
+        <h2>Notes</h2>
+        POSIX.1-2001 does not require the inclusion of
+        <i
+          >&lt;<a
+            href="https://linux.die.net/include/sys/types.h"
+            rel="nofollow"
+            >sys/types.h</a
+          >&gt;</i
+        >, and this header file is not required on Linux. However, some
+        historical (BSD) implementations required this header file, and portable
+        applications are probably wise to include it.
+        <p>
+          There may not always be a connection waiting after a <b>SIGIO</b> is
+          delivered or
+          <i
+            ><b
+              ><a href="https://linux.die.net/man/2/select" rel="nofollow"
+                >select</a
+              ></b
+            >(2)</i
+          >
+          or
+          <i
+            ><b
+              ><a href="https://linux.die.net/man/2/poll" rel="nofollow"
+                >poll</a
+              ></b
+            >(2)</i
+          >
+          return a readability event because the connection might have been
+          removed by an asynchronous network error or another thread before
+          <b>accept</b>() is called. If this happens then the call will block
+          waiting for the next connection to arrive. To ensure that
+          <b>accept</b>() never blocks, the passed socket <i>sockfd</i> needs to
+          have the <b>O_NONBLOCK</b> flag set (see
+          <i
+            ><b
+              ><a href="https://linux.die.net/man/7/socket" rel="nofollow"
+                >socket</a
+              ></b
+            >(7)</i
+          >).
+        </p>
+        <h3>The socklen_t type</h3>
+        The third argument of <b>accept</b>() was originally declared as an
+        <i>int *</i> (and is that under libc4 and libc5 and on many other
+        systems like 4.x BSD, SunOS 4, SGI); a POSIX.1g draft standard wanted to
+        change it into a <i>size_t *</i>, and that is what it is for SunOS 5.
+        Later POSIX drafts have <i>socklen_t *</i>, and so do the Single UNIX
+        Specification and glibc2. Quoting Linus Torvalds:
+        <p>
+          "_Any_ sane library _must_ have "socklen_t" be the same size as int.
+          Anything else breaks any BSD socket layer stuff. POSIX initially
+          <i>did</i> make it a size_t, and I (and hopefully others, but
+          obviously not too many) complained to them very loudly indeed. Making
+          it a size_t is completely broken, exactly because size_t very seldom
+          is the same size as "int" on 64-bit architectures, for example. And it
+          <i>has</i> to be the same size as "int" because that's what the BSD
+          socket interface is. Anyway, the POSIX people eventually got a clue,
+          and created "socklen_t". They shouldn't have touched it in the first
+          place, but once they did they felt it had to have a named type for
+          some unfathomable reason (probably somebody didn't like losing face
+          over having done the original stupid thing, so they silently just
+          renamed their blunder)."
+        </p>
+        <h2>Example</h2>
+        See
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/2/bind" rel="nofollow"
+              >bind</a
+            ></b
+          >(2)</i
+        >.
+        <h2>See Also</h2>
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/2/bind" rel="nofollow"
+              >bind</a
+            ></b
+          >(2)</i
+        >,
+        <i
+          ><b><a href="https://linux.die.net/man/2/connect">connect</a></b
+          >(2)</i
+        >,
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/2/listen" rel="nofollow"
+              >listen</a
+            ></b
+          >(2)</i
+        >,
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/2/select" rel="nofollow"
+              >select</a
+            ></b
+          >(2)</i
+        >,
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/2/socket" rel="nofollow"
+              >socket</a
+            ></b
+          >(2)</i
+        >,
+        <i
+          ><b
+            ><a href="https://linux.die.net/man/7/socket" rel="nofollow"
+              >socket</a
+            ></b
+          >(7)</i
+        >
+
+        <h2>Referenced By</h2>
+        <b
+          ><a href="https://linux.die.net/man/7/capabilities" rel="nofollow"
+            >capabilities</a
+          ></b
+        >(7),
+        <b><a href="https://linux.die.net/man/7/ddp" rel="nofollow">ddp</a></b
+        >(7),
+        <b
+          ><a href="https://linux.die.net/man/1/explain" rel="nofollow"
+            >explain</a
+          ></b
+        >(1),
+        <b
+          ><a href="https://linux.die.net/man/3/explain" rel="nofollow"
+            >explain</a
+          ></b
+        >(3),
+        <b
+          ><a href="https://linux.die.net/man/3/explain_accept" rel="nofollow"
+            >explain_accept</a
+          ></b
+        >(3),
+        <b
+          ><a
+            href="https://linux.die.net/man/3/explain_accept_or_die"
+            rel="nofollow"
+            >explain_accept_or_die</a
+          ></b
+        >(3),
+        <b
+          ><a href="https://linux.die.net/man/3/getaddrinfo" rel="nofollow"
+            >getaddrinfo</a
+          ></b
+        >(3),
+        <b
+          ><a href="https://linux.die.net/man/3/gethostbyname" rel="nofollow"
+            >gethostbyname</a
+          ></b
+        >(3),
+        <b
+          ><a href="https://linux.die.net/man/3/getnameinfo" rel="nofollow"
+            >getnameinfo</a
+          ></b
+        >(3),
+        <b
+          ><a href="https://linux.die.net/man/2/getpeername" rel="nofollow"
+            >getpeername</a
+          ></b
+        >(2),
+        <b
+          ><a href="https://linux.die.net/man/2/getsockname" rel="nofollow"
+            >getsockname</a
+          ></b
+        >(2),
+        <b><a href="https://linux.die.net/man/7/ip" rel="nofollow">ip</a></b
+        >(7),
+        <b
+          ><a href="https://linux.die.net/man/1/perlfunc" rel="nofollow"
+            >perlfunc</a
+          ></b
+        >(1),
+        <b><a href="https://linux.die.net/man/3/pth" rel="nofollow">pth</a></b
+        >(3),
+        <b><a href="https://linux.die.net/man/2/recv" rel="nofollow">recv</a></b
+        >(2),
+        <b><a href="https://linux.die.net/man/7/sctp" rel="nofollow">sctp</a></b
+        >(7),
+        <b
+          ><a href="https://linux.die.net/man/2/select_tut" rel="nofollow"
+            >select_tut</a
+          ></b
+        >(2),
+        <b><a href="https://linux.die.net/man/2/send" rel="nofollow">send</a></b
+        >(2),
+        <b
+          ><a href="https://linux.die.net/man/2/setsockopt" rel="nofollow"
+            >setsockopt</a
+          ></b
+        >(2),
+        <b
+          ><a href="https://linux.die.net/man/2/socketcall" rel="nofollow"
+            >socketcall</a
+          ></b
+        >(2),
+        <b><a href="https://linux.die.net/man/7/tcp" rel="nofollow">tcp</a></b
+        >(7),
+        <b><a href="https://linux.die.net/man/7/unix" rel="nofollow">unix</a></b
+        >(7)
+        <div id="adbottom">
+          <ins
+            class="adsbygoogle"
+            style="display: block"
+            data-ad-client="ca-pub-5823754184406795"
+            data-ad-slot="9246445644"
+            data-ad-format="rectangle, horizontal"
+            data-full-width-responsive="true"
+          ></ins>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
+      </main>
+    </div>
+    <script
+      defer="defer"
+      src="example-input_files/beacon.min.js"
+      data-cf-beacon='{"token": "8fa0f799e925403cb55fdb315f95761a"}'
+    ></script>
+    <script type="speculationrules">
+      {
+        "prefetch": [
+          {
+            "where": { "href_matches": "*://*.die.net/*" },
+            "eagerness": "conservative"
+          }
+        ]
+      }
+    </script>
+  </body>
+  <div style="all: initial"><div style="all: initial" id="__hcfy__"></div></div>
+</html>
