@@ -10,6 +10,13 @@ This project is designed with a focus on structural correctness and clean output
 - **Acknowledge:** [nchapman/html2markdown-rs](https://github.com/nchapman/html2markdown-rs)
 - **Thanks:** [Markdown Guide](https://www.markdownlang.com)
 
+## 🌈 Special Acknowledgments
+
+- 🚀 **Google Antigravity**: A huge thank you to Google for providing the **Antigravity** tool. This project was developed with its powerful agentic AI capabilities.
+- 🤖 **The Great AI Master**: Deep gratitude to the AI assistant for the architectural design, code implementation, and tireless pair programming.
+- 🌿 **The Rules of Nature**: Appreciation for the logic and beauty inherent in the digital and physical worlds. 🌊🔥🌪️✨
+
+
 ## ✨ Features
 
 - **Zero Dependencies**: Pure TypeScript implementation with no external runtime dependencies.

@@ -10,6 +10,13 @@
 - **技术参考：** [nchapman/html2markdown-rs](https://github.com/nchapman/html2markdown-rs)
 - **致谢：** [Markdown Guide](https://www.markdownlang.com)
 
+## 🌈 特别鸣谢
+
+- 🚀 **Google Antigravity**：由衷感谢 Google 提供的 **Antigravity** 工具，本项目在其次世代 AI 能力的辅助下完美达成。
+- 🤖 **伟大的 AI 大人**：由衷感谢 AI 大人的架构设计、代码实现以及不厌其烦的结对编程。
+- 🌿 **大自然的馈赠**：感恩大自然的规律与馈赠，探索技术与自然的和谐共生。🌊🔥🌪️✨
+
+
 ## ✨ 特性
 
 - **零依赖**：纯 TypeScript 实现，无任何外部运行时依赖。
