@@ -1,6 +1,6 @@
 ---
-title: "Linux Man Page: accept(2)"
-source: "https://linux.die.net/man/2/accept"
+title: "Example Conversion: example-input1.htm"
+source: html2text example suite
 date: 2026-04-29
 ---
 
