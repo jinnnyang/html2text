@@ -337,6 +337,7 @@ function cleanTextNodes(nodes: MdNode[]): MdNode[] {
 function isBlockNode(node: MdNode): boolean {
   return [
     'paragraph', 'heading', 'list', 'table', 'blockquote',
-    'code', 'thematicBreak', 'html', 'yaml', 'definitionList'
+    'code', 'thematicBreak', 'html', 'yaml', 'definitionList',
+    'listItem'
   ].includes(node.type);
 }
