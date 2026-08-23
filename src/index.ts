@@ -5,7 +5,7 @@
 import { parseHtml } from './parser';
 import { transformNodes } from './transformer';
 import { stringifyMdNodes } from './stringify';
-import type { MdNode, MdRoot, MdYaml } from './types';
+import type { MdRoot, MdYaml } from './types';
 
 export * from './types';
 export { parseHtml } from './parser';
@@ -17,7 +17,7 @@ export interface Html2MarkdownOptions {
    * YAML Front Matter to prepend to the output Markdown.
    * Can be a raw string or an object to be serialized.
    */
-  frontmatter?: Record<string, any> | string;
+  frontmatter?: Record<string, unknown> | string;
 }
 
 /**

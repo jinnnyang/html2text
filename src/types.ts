@@ -86,7 +86,7 @@ export interface MdRoot {
 export interface MdYaml {
   type: 'yaml';
   /** The front matter value. It can be an object to be serialized, or a raw string. */
-  value: Record<string, any> | string;
+  value: Record<string, unknown> | string;
 }
 
 /**

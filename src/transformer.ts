@@ -73,7 +73,28 @@ function transformNode(node: HtmlNode): MdNode | MdNode[] | null {
         children: transformNodes(children),
       };
 
-    case "div":
+    case "div": {
+      // MediaWiki syntax-highlighted code blocks:
+      // <div class="mw-highlight mw-highlight-lang-java"><pre>...spans...</pre></div>
+      // The language lives on the div's class, not on a <code> element.
+      const divClass = attrs["class"] || "";
+      const langMatch = divClass.match(/mw-highlight-lang-([a-zA-Z0-9\-]+)/);
+      if (langMatch) {
+        const pre = children.find(
+          (c): c is HtmlElement =>
+            c.type === "element" && (c as HtmlElement).tag === "pre",
+        );
+        if (pre) {
+          return {
+            type: "code",
+            lang: langMatch[1] || "",
+            value: extractRawText(pre.children).trim(),
+          } as MdCodeBlock;
+        }
+      }
+      return transformNodes(children);
+    }
+
     case "article":
     case "section":
     case "main":

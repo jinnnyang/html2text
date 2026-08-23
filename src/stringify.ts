@@ -4,9 +4,7 @@
 
 import type { MdNode, MdTable, MdTableRow, MdYaml } from "./types";
 
-interface StringifyContext {
-  // Empty context for now, can be extended later
-}
+type StringifyContext = Record<string, never>;
 
 /**
  * Serializes an array of Markdown AST nodes into a Markdown string.
@@ -89,7 +87,14 @@ function stringifyNode(node: MdNode, ctx: StringifyContext): string {
       const lang = node.lang || "";
       // Ensure the code block ends with a newline before the closing backticks
       const code = node.value.endsWith("\n") ? node.value : node.value + "\n";
-      return `\`\`\`${lang}\n${code}\`\`\``;
+      // 动态围栏：内容里含反引号串时，围栏要比最长串多一个（至少 3 个）
+      let fence = "```";
+      const runs = code.match(/`{3,}/g);
+      if (runs) {
+        const longest = Math.max(...runs.map((r) => r.length));
+        fence = "`".repeat(longest + 1);
+      }
+      return `${fence}${lang}\n${code}${fence}`;
     }
 
     case "blockquote": {
@@ -179,11 +184,11 @@ function stringifyNode(node: MdNode, ctx: StringifyContext): string {
     case "listItem":
     case "definitionTerm":
     case "definitionDescription":
-      return stringifyNodesInternal((node as any).children, ctx);
+      return stringifyNodesInternal(node.children, ctx);
 
     case "tableRow":
     case "tableCell":
-      return stringifyChildren((node as any).children, ctx);
+      return stringifyChildren(node.children, ctx);
 
     default:
       return "";
@@ -239,7 +244,12 @@ function stringifyTable(table: MdTable, ctx: StringifyContext): string {
   // Extract text representation of all cells
   const stringifiedRows: string[][] = rows.map((row) => {
     return row.children.map((cell) =>
-      stringifyChildren(cell.children, ctx).trim(),
+      stringifyChildren(cell.children, ctx)
+        .trim()
+        .replace(/[ \t]*\n{2,}[ \t]*/g, "<br><br>")
+        .replace(/[ \t]*\n[ \t]*/g, "<br>")
+        // 单元格内字面 | 会被 GFM 当列分隔符，必须转义
+        .replace(/\|/g, "\\|"),
     );
   });
 
@@ -306,7 +316,7 @@ function stringifyYaml(node: MdYaml): string {
   }
 
   let yaml = "---\n";
-  const obj = node.value as Record<string, any>;
+  const obj = node.value;
   for (const key in obj) {
     if (Object.prototype.hasOwnProperty.call(obj, key)) {
       const val = obj[key];
@@ -324,7 +334,7 @@ function stringifyYaml(node: MdYaml): string {
         });
       } else if (typeof val === "object" && val !== null) {
         yaml += `${key}:\n`;
-        const subObj = val as Record<string, any>;
+        const subObj = val as Record<string, unknown>;
         for (const subKey in subObj) {
           yaml += `  ${subKey}: ${subObj[subKey]}\n`;
         }
